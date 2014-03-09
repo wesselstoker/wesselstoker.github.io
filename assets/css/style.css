@@ -24,7 +24,6 @@ body{
 
 .intro{
     display:none;
-    background: url(img/wallpaper.png) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -38,14 +37,14 @@ body{
     height:140px;
     background: transparent url(img/background.png) repeat;
     border-radius: 999px;
-    padding: 2px;
+    padding: 3px;
     margin: 10px auto 10px auto;
 }
 
 
 .intro .photo > .photo-inner{
-    width:136px;
-    height:136px;
+    width:134px;
+    height:134px;
     border-radius: 999px;
 }
 
