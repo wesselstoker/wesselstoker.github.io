@@ -1,9 +1,9 @@
 $(document).ready(function(){
-    var colors = new Array("#1abc9c","#2ecc71","#3498db","#9b59b6","#34495e","#16a085","#27ae60","#2980b9","#2c3e50","#e74c3c","#e67e22","#f39c12","#c0392b");
+    var colors = new Array("#1abc9c","#2ecc71","#3498db","#34495e","#16a085","#27ae60","#2980b9","#2c3e50","#e74c3c","#e67e22","#f39c12","#c0392b");
     var currentColor = colors[Math.floor(Math.random() * colors.length)];
     var top = $(document).scrollTop()
 
-    $(".intro")
+    $(".intro,.footer,.footer-break")
         .css("background-color", currentColor)
 
     if(top == 0){
@@ -14,13 +14,10 @@ $(document).ready(function(){
             .css("display", "block")        
     }
     
-    $(".footer")
-        .css("background-color", currentColor);
-
     setInterval(function() {
         var newColor = colors[Math.floor(Math.random() * colors.length)];
 
-        $(".intro,.footer")
+        $(".intro,.footer,.footer-break")
             .addClass("transition")
             .css("background-color", newColor)
 
