@@ -172,6 +172,7 @@ h1{
 
 .footer-menu li a{
     color: #D9D9D9;
+    text-shadow: none;
 }
 
 .footer-menu li a:hover{
