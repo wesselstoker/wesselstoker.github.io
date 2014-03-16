@@ -1,7 +1,7 @@
 $(document).ready(function(){
-    var colors = new Array("#1abc9c","#2ecc71","#3498db","#34495e","#16a085","#27ae60","#2980b9","#2c3e50","#e74c3c","#e67e22","#f39c12","#c0392b");
+    var colors       = new Array("#1abc9c","#2ecc71","#3498db","#34495e","#16a085","#27ae60","#2980b9","#2c3e50","#e74c3c","#e67e22","#f39c12","#c0392b");
     var currentColor = colors[Math.floor(Math.random() * colors.length)];
-    var top = $(document).scrollTop()
+    var top          = $(document).scrollTop()
 
     $(".intro,.footer,.footer-break")
         .css("background-color", currentColor)
@@ -21,46 +21,55 @@ $(document).ready(function(){
             .addClass("transition")
             .css("background-color", newColor)
 
-    }, 10000);
+    }, 8000);
+
+    $(".contact-send").click(function(){
+        var name    = $(".contact-name").val()
+        var email   = $(".contact-email").val()
+        var message = $(".contact-message").val()
+        var object    = {"name" : name, "email" : email, "message" : message}
+        var filter  = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
+        var error   = false
+        $(".email-alert").append("")
+        $(".form-group")
+            .removeClass("has-error")
+
+        if(name == ""){
+            error = true
+            $(".group-name")
+                .addClass("has-error")
+        }
+
+        if(email == ""){
+            error = true
+            $(".group-email")
+                .addClass("has-error")
+        }
+
+        if (!filter.test(email)){
+            error = true
+            $(".group-email")
+                .addClass("has-error")
+        }
+
+        if(message == ""){
+            error = true
+            $(".group-message")
+                .addClass("has-error")
+        }
+
+        if(!error){
+            $.ajax({
+                type: 'POST',
+                url: "http://intotheweb.nl/mail.php",
+                data: object,
+                dataType: "text",
+                success: function(){
+                    $(".alert-success").fadeIn()
+                }
+            })
+        }
+    });
 
     smoothScroll.init();
 });
-
-//initialize google maps
-function initialize() {
-    var e = [{
-        stylers: [{
-            saturation: "-100"
-        }]
-    }],
-        t = new google.maps.LatLng(53.18549, 5.83931),
-        n = new google.maps.LatLng(53.18549, 5.83931),
-        r = {
-            zoom: 16,
-            scrollwheel: !1,
-            streetViewControl: !1,
-            center: t,
-            mapTypeControl: !1,
-            mapTypeId: MY_MAPTYPE_ID
-        }, i = new google.maps.Map(document.getElementById("map-canvas"), r),
-        s = "http://maps.google.com/mapfiles/marker.png";
-    new google.maps.Marker({
-        position: n,
-        map: i,
-        title: "Wessel Stoker",
-        icon: s
-    });
-    var o = {
-        name: "Custom Style"
-    }, u = new google.maps.StyledMapType(e, o);
-    i.mapTypes.set(MY_MAPTYPE_ID, u)
-}
-//load google maps
-function loadScript() {
-    var e = document.createElement("script");
-    e.type = "text/javascript";
-    e.src = "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize";
-    document.body.appendChild(e)
-}
-var MY_MAPTYPE_ID = "custom_style";
-window.onload = loadScript;
