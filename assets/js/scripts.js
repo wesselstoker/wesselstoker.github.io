@@ -30,7 +30,9 @@ $(document).ready(function(){
         var object    = {"name" : name, "email" : email, "message" : message}
         var filter  = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
         var error   = false
+
         $(".email-alert").append("")
+        
         $(".form-group")
             .removeClass("has-error")
 
@@ -59,15 +61,14 @@ $(document).ready(function(){
         }
 
         if(!error){
+            $(".alert-success").fadeIn()
+            $(".contact-name, .contact-email, .contact-message").val("")
             $.ajax({
-                type: 'POST',
-                url: "http://intotheweb.nl/mail.php",
+                url: 'http://www.intotheweb.nl/mail.php',
+                type: "POST",
                 data: object,
-                dataType: "text",
-                success: function(){
-                    $(".alert-success").fadeIn()
-                }
-            })
+                dataType: "jsonp"
+            });
         }
     });
 
