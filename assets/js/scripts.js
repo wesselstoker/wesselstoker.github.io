@@ -31,6 +31,7 @@ $(document).ready(function(){
         var filter  = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
         var error   = false
 
+        $(".alert-success").fadeOut()
         $(".email-alert").append("")
         
         $(".form-group")

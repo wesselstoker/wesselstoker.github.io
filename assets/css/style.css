@@ -59,7 +59,7 @@ h1{
     position: relative;
     display: block;
     overflow: hidden;
-    width: 360px;
+    width: 370px;
     margin: auto;
     padding: 35px 0 0;
 }
@@ -159,7 +159,7 @@ h1{
 }
 
 .menu-bottom{
-    width: 157px;
+    width: 167px;
     margin: auto;
     padding: 35px 0px 35px;
 }
@@ -176,7 +176,7 @@ h1{
 }
 
 .footer-menu{
-    width: 478px;
+    width: 488px;
     padding: 35px 0 0;
 }
 
