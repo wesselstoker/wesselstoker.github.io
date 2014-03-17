@@ -15,23 +15,28 @@ $(document).ready(function(){
     }
     
     setInterval(function() {
-        var newColor = colors[Math.floor(Math.random() * colors.length)];
+        var nextColor = colors[Math.floor(Math.random() * colors.length)];
 
         $(".intro,.footer,.footer-break")
             .addClass("transition")
-            .css("background-color", newColor)
+            .css("background-color", nextColor)
 
     }, 8000);
+
+    $(".photo-inner-footer").click(function(){
+        $("body").animate({ scrollTop: 0 }, 600);
+    });
 
     $(".contact-send").click(function(){
         var name    = $(".contact-name").val()
         var email   = $(".contact-email").val()
         var message = $(".contact-message").val()
-        var object    = {"name" : name, "email" : email, "message" : message}
+        var object  = {"name" : name, "email" : email, "message" : message}
         var filter  = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
         var error   = false
 
         $(".alert-success").fadeOut()
+
         $(".email-alert").append("")
         
         $(".form-group")
