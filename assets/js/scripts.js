@@ -36,8 +36,6 @@ $(document).ready(function(){
         var error   = false
 
         $(".alert-success").fadeOut()
-
-        $(".email-alert").append("")
         
         $(".form-group")
             .removeClass("has-error")
@@ -69,13 +67,19 @@ $(document).ready(function(){
         if(!error){
             $(".alert-success").fadeIn()
             $(".contact-name, .contact-email, .contact-message").val("")
-            $.ajax({
+            
+	    $.ajax({
                 url: 'http://www.intotheweb.nl/mail.php',
                 type: "POST",
                 data: object,
                 dataType: "jsonp"
             });
         }
+    });
+
+    $(".control-label").click(function(){
+	$(".form-group")
+            .removeClass("has-error")
     });
 
     smoothScroll.init();
