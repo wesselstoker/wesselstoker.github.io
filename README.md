@@ -1,4 +1,1 @@
-wesselstoker.github.io
-======================
-
-My personal website.
+wesselstoker.com
