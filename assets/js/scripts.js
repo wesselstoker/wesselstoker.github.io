@@ -3,19 +3,24 @@ $(document).ready(function(){
     var currentColor = colors[Math.floor(Math.random() * colors.length)];
     var top          = $(document).scrollTop()
 
+    console.log("Hi! Nice to meet you to. ~Wessel \n=============================\nStart color: " + currentColor)
+
     $(".intro,.footer,.footer-break")
         .css("background-color", currentColor)
 
     if(top == 0){
+	console.log("Scroll postition: " + top + ". Lets slide the header down!")
         $(".intro")
             .slideDown(1500);
     }else{
-        $(".intro")
+        console.log("Scroll postition: " + top + ". Dont slide the header down!")
+	$(".intro")
             .css("display", "block")        
     }
     
     setInterval(function() {
         var nextColor = colors[Math.floor(Math.random() * colors.length)];
+	console.log("Change color to: " + nextColor)
 
         $(".intro,.footer,.footer-break")
             .addClass("transition")
@@ -24,6 +29,7 @@ $(document).ready(function(){
     }, 8000);
 
     $(".photo-inner-footer").click(function(){
+	console.log("Lets go to the MOOOOOON!")
         $("body")
 	    .animate({scrollTop: 0}, 600)
     });
@@ -35,6 +41,8 @@ $(document).ready(function(){
         var object  = {"name" : name, "email" : email, "message" : message}
         var filter  = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
         var error   = false
+
+	console.log("Request to send a message.")
 
         $(".alert-success").fadeOut()
         
@@ -68,14 +76,18 @@ $(document).ready(function(){
         if(!error){
             $(".alert-success").fadeIn()
             $(".contact-name, .contact-email, .contact-message").val("")
-            
 	    $.ajax({
                 url: 'http://www.intotheweb.nl/mail.php',
                 type: "POST",
                 data: object,
-                dataType: "jsonp"
+                dataType: "jsonp",
+		succes: ""
             });
-        }
+
+	    console.log("Message is send to the mail API. Callback:")
+        }else{
+	    console.log("Aaaarch, invalid input! Is it spam?")
+	}
     });
 
     $(".form-group").click(function(){
