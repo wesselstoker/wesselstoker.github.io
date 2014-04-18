@@ -3,7 +3,7 @@ $(document).ready(function(){
     var currentColor = colors[Math.floor(Math.random() * colors.length)];
     var top          = $(document).scrollTop()
 
-    console.log("Hi! Nice to meet you to. ~Wessel \n=============================\nStart color: " + currentColor)
+    console.log("Hi! Nice to meet you to. ~Wessel \n================================\nStart color: " + currentColor)
 
     $(".intro,.footer,.footer-break")
         .css("background-color", currentColor)
