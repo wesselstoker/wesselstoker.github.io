@@ -269,6 +269,10 @@ a:hover{
 }
 
 .footer-break{
+<<<<<<< HEAD
+=======
+    min-height: 40px;
+>>>>>>> 0fa6a1c22144b7d180a04493d319bff7e5e7299c
     width: 100%;
     padding:10px;
     box-shadow: 0px -5px 15px #888;
